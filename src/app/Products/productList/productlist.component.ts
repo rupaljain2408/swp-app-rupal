@@ -28,6 +28,8 @@ export class ProductList implements OnInit{
     sortBySelectedItems =[];
     sortByDropdownSettings = {};
 
+    brandSelections :string = "";
+
     constructor(private productServe:ProductService,    
     private sharedServe:SharedServiceGM){}
 
@@ -40,7 +42,7 @@ export class ProductList implements OnInit{
 
 
         this.brandDropdownSettings = {
-            singleSelection: true,
+            singleSelection: false,
             text: "Select Brand",
             selectAllText: 'Select All',
             unSelectAllText: 'UnSelect All',
@@ -75,8 +77,13 @@ export class ProductList implements OnInit{
        this.productServe.getHomeBanner().subscribe(products => this.products = products);
     }
 
-    private loadProductList(){
-        this.productServe.getProductList().subscribe(productList => this.productList= productList.result);
+    private loadProductList(brandSelections ?: string){
+        if(brandSelections){
+            this.productServe.getProductList(brandSelections).subscribe(productList => this.productList= productList.result);            
+        }
+        else{
+            this.productServe.getProductList().subscribe(productList => this.productList= productList.result);
+        }
 
         console.log("prod list", this.productList);
     }
@@ -97,16 +104,32 @@ export class ProductList implements OnInit{
     }
 
     private loadBrandList( categoryId ?: string){
-        this.productServe.getBrandList().subscribe(brandList => {
-             this.brandList= brandList.result;
-            let tempBrand =  brandList.result;
-            for (let brandObj of tempBrand) {
-                if (brandObj.is_default) {
-                    this.brandSelectedItems.push({ "id": brandObj.brand_id, "itemName": brandObj.brand_name });
+        this.brandDropdownList = [] ;
+       if(categoryId){
+            this.productServe.getBrandList(categoryId).subscribe(brandList => {
+                this.brandList= brandList.result;
+                let tempBrand =  brandList.result;
+                for (let brandObj of tempBrand) {
+                    if (brandObj.is_default) {
+                        this.brandSelectedItems.push({ "id": brandObj.brand_id, "itemName": brandObj.brand_name });
+                    }
+                    this.brandDropdownList.push({ "id": brandObj.brand_id, "itemName": brandObj.brand_name });
                 }
-                this.brandDropdownList.push({ "id": brandObj.brand_id, "itemName": brandObj.brand_name });
-            }
-        });
+            });
+        }
+        else{
+            this.productServe.getBrandList().subscribe(brandList => {
+                this.brandList= brandList.result;
+                let tempBrand =  brandList.result;
+                for (let brandObj of tempBrand) {
+                    if (brandObj.is_default) {
+                        this.brandSelectedItems.push({ "id": brandObj.brand_id, "itemName": brandObj.brand_name });
+                    }
+                    this.brandDropdownList.push({ "id": brandObj.brand_id, "itemName": brandObj.brand_name });
+                }
+            });
+        }
+        
       
 
         console.log("Brand list", this.brandList);
@@ -129,16 +152,25 @@ export class ProductList implements OnInit{
 
 
     onBrandItemSelect($event) {
-        console.log($event);
-        console.log(this.brandSelectedItems);
+        this.brandSelections = "";
+        for (let brandItem of this.brandSelectedItems) {
+                this.brandSelections += brandItem.id +",";  
+            }
+
+        this.loadProductList(this.brandSelections);
         
     }
     onBrandItemDeSelect($event) {
-       console.log("Brand deselect item :" + $event);
-       console.log(this.brandSelectedItems);
+        this.brandSelections = "";
+        for (let brandItem of this.brandSelectedItems) {
+                this.brandSelections += brandItem.id +",";  
+            }
+        this.loadProductList(this.brandSelections);            
     }
     onCategoryItemSelect(item: any) {
         console.log("category select item :" + item);
+        // console.log(this.categorySelectedItems[0].id);
+        this.loadBrandList(this.categorySelectedItems[0].id);
     }
     onCategoryItemDeSelect(item: any) {
         console.log("category deselect item :" + item);

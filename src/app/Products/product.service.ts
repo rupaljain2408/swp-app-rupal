@@ -68,10 +68,17 @@ export class ProductService{
         });
     }
     
-    getProductList(){
+    getProductList(brandSelections ?: string){
         var tokenKey = this.sharedServe.getTokenKey();
 
-        let rawData = {token:tokenKey,orderby:"product_name"};  
+         let rawData={};
+        if(brandSelections){
+             rawData = {token:tokenKey,orderby:"product_name", brandid : brandSelections};
+        }
+        else{
+             rawData = {token:tokenKey,orderby:"product_name"};
+        }
+  
         //let bodyString = JSON.stringify(authInfo); //Stringify object
         let headers = new Headers({ 'Content-Type': 'application/json' }); //Set content type to JSON
         let options = new RequestOptions({ headers: headers, withCredentials: true});
