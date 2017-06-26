@@ -150,22 +150,27 @@ export class ProductList implements OnInit{
         console.log("SortBy list", this.sortByList);
     }
 
-
-    onBrandItemSelect($event) {
+    onBrandSelectionChange(){
         this.brandSelections = "";
-        for (let brandItem of this.brandSelectedItems) {
-                this.brandSelections += brandItem.id +",";  
+
+            for(var i=0; i<this.brandSelectedItems.length; i++){
+                if(i== this.brandSelectedItems.length-1){
+                this.brandSelections += this.brandSelectedItems[i].id; 
+ 
+                }else{
+                this.brandSelections += this.brandSelectedItems[i].id +",";                     
+                }
             }
 
         this.loadProductList(this.brandSelections);
-        
+    }
+
+
+    onBrandItemSelect($event) {
+        this.onBrandSelectionChange();
     }
     onBrandItemDeSelect($event) {
-        this.brandSelections = "";
-        for (let brandItem of this.brandSelectedItems) {
-                this.brandSelections += brandItem.id +",";  
-            }
-        this.loadProductList(this.brandSelections);            
+       this.onBrandSelectionChange();          
     }
     onCategoryItemSelect(item: any) {
         console.log("category select item :" + item);
