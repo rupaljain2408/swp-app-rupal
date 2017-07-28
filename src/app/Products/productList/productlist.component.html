@@ -1,104 +1,109 @@
 <section class="pg-heading">
-			<div class="container" >
-				<div class="row">
-					<form role="form" class="col-xs-12 form-horizontal">
-						<div class="form-group">
-							<label for="" class="col-xs-12 col-md-2">Filters</label>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<!--<select class="custom-select">	
+	<div class="container">
+		<div class="row">
+			<form role="form" class="col-xs-12 form-horizontal">
+				<div class="form-group">
+					<label for="" class="col-xs-12 col-md-2">Filters</label>
+					<div class="col-xs-6 col-sm-3 col-md-2">
+						<!--<select class="custom-select">	
 									<option *ngFor='let brandElement of brandList;' [id]="brandElement.brand_id">{{brandElement.brand_name}}</option>
 								</select>-->
-								<angular2-multiselect name="brand" [disable]="brandDisable" [data]="brandDropdownList" [(ngModel)]="brandSelectedItems" [settings]="brandDropdownSettings" (onSelect)="onBrandItemSelect($event)" (onDeSelect)="onBrandItemDeSelect($event)"></angular2-multiselect>							
-							</div>	
-							<div class="col-xs-6 col-sm-3 col-md-2">							
-								<!--<select class="custom-select">	
+						<angular2-multiselect name="brand" [disable]="brandDisable" [data]="brandDropdownList" [(ngModel)]="brandSelectedItems" [settings]="brandDropdownSettings"
+						 (onSelect)="onBrandItemSelect($event)" (onDeSelect)="onBrandItemDeSelect($event)"></angular2-multiselect>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-2">
+						<!--<select class="custom-select">	
 									<option *ngFor='let categoryElement of categoryList;' [id]="categoryElement.category_id">{{categoryElement.category_name}}</option>
 								</select>-->
-								<angular2-multiselect name="category" [disable]="categoryDisable" [data]="categoryDropdownList" [(ngModel)]="categorySelectedItems" [settings]="categoryDropdownSettings" (onSelect)="onCategoryItemSelect($event)" (onDeSelect)="onCategoryItemDeSelect($event)"></angular2-multiselect>
-							</div>		
-							<div class="col-xs-6 col-sm-3 col-md-2">							
-								<select class="custom-select">
+						<angular2-multiselect name="category" [disable]="categoryDisable" [data]="categoryDropdownList" [(ngModel)]="categorySelectedItems"
+						 [settings]="categoryDropdownSettings" (onSelect)="onCategoryItemSelect($event)" (onDeSelect)="onCategoryItemDeSelect($event)"></angular2-multiselect>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-2">
+						<select class="custom-select">
 									<option>Size</option>
 									<option>Larg</option>
 									<option>XL</option>
 									<option>XXL</option>
 								</select>
-							</div>	
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<select class="custom-select">
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-2">
+						<select class="custom-select">
 									<option>Price</option>
 									<option>Item1</option>
 									<option>Item2</option>
 									<option>Item3</option>
 								</select>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-2">
-								<div class="fright">
-									<!--<select class="custom-select">
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-2">
+						<div class="fright">
+							<!--<select class="custom-select">
 										<option *ngFor='let sortByElement of sortByList.orderlist;' value="sortByElement.value">{{sortByElement.name}}</option>
 									</select>-->
-									<angular2-multiselect name="sortBy" [disable]="sortByDisable" [data]="sortByDropdownList" [(ngModel)]="sortBySelectedItems" [settings]="sortByDropdownSettings" (onSelect)="onSortByItemSelect($event)" (onDeSelect)="onSortByItemDeSelect($event)"></angular2-multiselect>
-								</div>
-							</div>
+							<angular2-multiselect name="sortBy" [disable]="sortByDisable" [data]="sortByDropdownList" [(ngModel)]="sortBySelectedItems"
+							 [settings]="sortByDropdownSettings" (onSelect)="onSortByItemSelect($event)" (onDeSelect)="onSortByItemDeSelect($event)"></angular2-multiselect>
 						</div>
-					</form>				
-				</div>
-			</div>
-		</section>
-		
-		<div class="container main-content">
-			<div class="row">
-				<div class="col-xs-12 select-prod-wrap">
-					<p>Showing 1 - 60 of 111,441 results for "Shoes" </p>
-					<div class="row product-row">
-						<div class="col-xs-12 col-sm-6 col-md-3" *ngFor='let prodElement of productList;'>
-							<p class="offer-details text-right">
-								<a href="javscript:void(0)" class="cart-icon selected"><i class="fa fa-shopping-cart"></i></a>
-							</p>				
-							<section id="myCarousel01" class="carousel slide">
-								<!-- Indicators -->
-								<ol class="carousel-indicators">
-									<li data-target="#myCarousel01" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarousel01" data-slide-to="1"></li>
-									<li data-target="#myCarousel01" data-slide-to="2"></li>
-								</ol>
-								<!-- Wrapper for Slides -->
-								<div class="carousel-inner text-center">
-									<div class="item active">
-										<div class="fill">
-											<img src="images/chitale-dahi.jpg" alt=""/>
-										</div>
-									</div>
-									<div class="item">
-										<div class="fill">
-											<img src="images/chitale-dahi.jpg" alt=""/>
-										</div>
-									</div>
-									<div class="item">
-										<div class="fill">
-											<img src="images/chitale-dahi.jpg" alt=""/>
-										</div>
-									</div>
-								</div>
-							</section>					
-							<p class="prod-details">{{prodElement.product_name}}</p>
-							<p class="prod-price col-lg-8 rmv-plr">Rs {{prodElement.amount}}/- <span class="prod-discount strike">1245/-</span></p>
-							<p class="offer-details text-right col-lg-4 rmv-plr">50% Off</p>
-						</div>
-						
 					</div>
 				</div>
-				<div class="col-xs-12">
-					<ul class="pagination pull-right">
-					  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-left"></i></a></li>
-					  <li><a href="javascript:void(0)">1</a></li>
-					  <li><a href="javascript:void(0)">2</a></li>
-					  <li><a href="javascript:void(0)">3</a></li>
-					  <li><a href="javascript:void(0)">4</a></li>
-					  <li><a href="javascript:void(0)">5</a></li>
-					  <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></li>
-					</ul>
+			</form>
+		</div>
+	</div>
+</section>
+
+<div class="container main-content">
+	<div class="row">
+		<div class="col-xs-12 select-prod-wrap">
+			<p>Showing 1 - 60 of 111,441 results for "Shoes" </p>
+			<div class="row product-row">
+				<div class="col-xs-12 col-sm-6 col-md-3" *ngFor='let prodElement of productList;'>
+					<a [routerLink]="['/fullhouse', {outlets:{'headeroutlet':'productsDetails'}}]">
+						<p class="offer-details text-right">
+							<a href="javscript:void(0)" class="cart-icon selected"><i class="fa fa-shopping-cart"></i></a>
+						</p>
+						<section id="myCarousel01" class="carousel slide">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#myCarousel01" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel01" data-slide-to="1"></li>
+								<li data-target="#myCarousel01" data-slide-to="2"></li>
+							</ol>
+							<!-- Wrapper for Slides -->
+							<div class="carousel-inner text-center">
+								<div class="item active">
+									<div class="fill">
+										<img src="images/chitale-dahi.jpg" alt="" />
+									</div>
+								</div>
+								<div class="item">
+									<div class="fill">
+										<img src="images/chitale-dahi.jpg" alt="" />
+									</div>
+								</div>
+								<div class="item">
+									<div class="fill">
+										<img src="images/chitale-dahi.jpg" alt="" />
+									</div>
+								</div>
+							</div>
+						</section>
+						<p class="prod-details">{{prodElement.product_name}}</p>
+						<p class="prod-price col-lg-8 rmv-plr">Rs {{prodElement.amount}}/- <span class="prod-discount strike">1245/-</span></p>
+						<p class="offer-details text-right col-lg-4 rmv-plr">50% Off</p>
+					</a>
 				</div>
+
 			</div>
 		</div>
-		<!-- /.container -->
+		<div class="col-xs-12">
+			<ul class="pagination pull-right">
+				<li><a href="javascript:void(0)"><i class="fa fa-angle-double-left"></i></a></li>
+				<li><a href="javascript:void(0)">1</a></li>
+				<li><a href="javascript:void(0)">2</a></li>
+				<li><a href="javascript:void(0)">3</a></li>
+				<li><a href="javascript:void(0)">4</a></li>
+				<li><a href="javascript:void(0)">5</a></li>
+				<li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- /.container -->

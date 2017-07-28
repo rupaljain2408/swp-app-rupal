@@ -3,8 +3,9 @@ import { FormsModule } from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
-import {ProductService} from './product.service';
+// import {ProductService} from './product.service';
 import {ProductList} from './productList/productlist.component';
+import {ProductSelection} from './productDetails/productSelection';
 import {HomeComponent} from '../Home/home.component';
 import { Carousel } from '../SharedComponents/Carousel/carousel.component';
 import { Slide } from '../SharedComponents/Carousel/slide.component';
@@ -13,7 +14,8 @@ import { AngularMultiSelectModule } from '../SharedComponents/angular2-multisele
 @NgModule({
  declarations: [
     HomeComponent,    
-    ProductList,    
+    ProductList,
+    ProductSelection,    
     Carousel,
     Slide
   ],
@@ -23,6 +25,6 @@ import { AngularMultiSelectModule } from '../SharedComponents/angular2-multisele
       RouterModule,
       AngularMultiSelectModule
   ],
-  providers: [ProductService],  
+  providers: [],  
 })
 export class ProductModule{}

@@ -4,13 +4,16 @@ import {ProductsModel} from './product.model';
 
 import {ConfigurationData} from '../CommonServices/configuration.model';
 import {SharedServiceGM} from '../CommonServices/shared.service';
+import {productListModel } from "app/Products/productList/productlist.model";
 
 @Injectable()
 export class ProductService{
-
+    productsList : productListModel[];
     constructor(private http:Http,
-    private sharedServe:SharedServiceGM){}
-
+    private sharedServe:SharedServiceGM){
+        this.productsList = [];
+    }
+    
     getHomeOffer(){
         var tokenKey = this.sharedServe.getTokenKey();
 
@@ -56,14 +59,16 @@ export class ProductService{
 
     getAllProductList(sortOrder, brandId, categoryId, searchKeyword){
         var tokenKey = this.sharedServe.getTokenKey();        
-
+        this.productsList=[];
         let rawData = {orderby : sortOrder, brandid:brandId, categoryid:categoryId, searchkey:searchKeyword, token:tokenKey};  
         //let bodyString = JSON.stringify(authInfo); //Stringify object
         let headers = new Headers({ 'Content-Type': 'application/json' }); //Set content type to JSON
         let options = new RequestOptions({ headers: headers, withCredentials: true});
 
         return this.http.post(ConfigurationData.appBLURL + 'product/prodlist', rawData, options)
-        .map((response : Response) => {            
+        .map((response : Response) => { 
+            
+            this.productsList= response.json().result;           
             return response.json()
         });
     }
@@ -139,5 +144,13 @@ export class ProductService{
         .map((response : Response) => {            
             return response.json()
         });
-    }        
+    }
+    
+    //filtering array to get particular product by id
+
+    getProductById(product_id:string){
+
+        return this.productsList.find(x => x.product_id === product_id);
+        
+    }
 }

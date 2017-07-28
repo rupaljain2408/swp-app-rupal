@@ -1,0 +1,38 @@
+
+		
+		<div class="container main-content prod-select-wrap">
+			<div class="row border-bot pb-15">
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<img src={{productlist.image_path}} alt="images/chitale-dahi.jpg" title="" />
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8" *ngIf="productlist">
+					<h2>{{productlist.product_name}}</h2>
+					<p>{{productlist.description}}</p>
+					<div class="prod-details">
+						<span class="prod-price">{{productlist.amount}}/ Item</span> <input type="number" name="" id=""  class="form-control" [(ngModel)]="productQty" pattern="[0-9]+"/>
+						<button type="button" class="btn btn-default btn-border-right minus-btn" (click)="decrementQty()"><i class="fa fa-minus"></i></button>
+						<button type="button" class="btn btn-default plus-btn" (click)="incrementQty()"><i class="fa fa-plus"></i></button>
+						<button type="button" class="btn primary-action-btn" (click)="addToCart()"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+					</div>
+					
+				</div>
+			</div>
+			<!-- <div class="row border-bot pb-15">
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<img src="images/milk-bottol.png" alt="" title="" />
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-8">
+					<h2>Chitale Shrikhand (Keshar)</h2>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+					<div class="prod-details">
+						<span class="prod-price">50/ Item</span> <input type="text" name="" id="" value="100gm" class="form-control"/>
+						<button type="button" class="btn btn-default btn-border-right minus-btn"><i class="fa fa-minus"></i></button>
+						<button type="button" class="btn btn-default plus-btn"><i class="fa fa-plus"></i></button>
+						<button type="button" class="btn primary-action-btn"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+					</div>
+					
+				</div>
+			</div> -->
+		</div>
+		<!-- /.container -->
+

@@ -7,6 +7,7 @@ import {MaterialModule} from '@angular/material';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import {ProductModule} from './Products/product.module';
+import {ProductService} from './Products/product.service'
 import { AppComponent } from './app.component';
 import {routing} from './app.route';
 import {AlertComponent} from './SharedComponents/Alerts/alert.component';
@@ -37,7 +38,7 @@ import {HeaderComponent} from './SharedComponents/header.component';
     AngularMultiSelectModule,    
     routing
   ],
-  providers: [AlertService, AuthenticationService, AuthGuard, SharedServiceGM, CookieService],
+  providers: [AlertService, AuthenticationService, AuthGuard, SharedServiceGM, CookieService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

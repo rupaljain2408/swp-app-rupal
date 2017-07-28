@@ -31,7 +31,9 @@ export class ProductList implements OnInit{
     brandSelections :string = "";
 
     constructor(private productServe:ProductService,    
-    private sharedServe:SharedServiceGM){}
+    private sharedServe:SharedServiceGM){
+
+    }
 
     ngOnInit(){
         this.loadHomeProducts(); 
@@ -192,5 +194,10 @@ export class ProductList implements OnInit{
     }
     onDeSelectAll(items: any) {
         console.log(items);
+    }
+
+    getProductDetails(product_id : string){
+        console.log(this.productServe.getProductById(product_id));
+
     }
 }
